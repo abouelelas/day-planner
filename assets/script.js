@@ -17,11 +17,6 @@ function getLocalStorage() {
 
     $(".saveBtn").each(function (elem) {
         $(this).parent().siblings().children('.description').val(localStorage.getItem($(this).attr("id")));
-        // let value = localStorage.getItem(key);
-        // console.log(value);
-        // if (value) {
-        //     $(`#text${key}`).text(value);
-        // }
     });
 }
 $(document).ready(function () {
@@ -37,32 +32,20 @@ $(document).ready(function () {
         var currentTime = new Date().getHours();
         console.log("currentTime: ", currentTime);
         console.log(localStorage.getItem);
-        //compare currentTime with localStorage time and if currentTime === localStorage
-        //  $("whateverElement").addClass("whateverisyourcolor") and 
-    //     for (var i = 9; i < 18; i++) {
-    //         console.log(currentTime, $('.description').data("tdata-time"));
-    //         console.log($(`description`).data("time"));
-    //         console.log("currentTime: ", currentTime);
-    //         //if they equal each other, then check those elements and makes sure that the class has been added.
-    //         if ($(`.description`).data("time") == currentTime) {
-    //             $(`.description${i}`).addClass("present");
-    //         } else if (currentTime < $(`.description${i}`).data("time")) {
-    //             $(`.description${i}`).addClass("future");
-    //         }
-    //     }
-    // }
         for (var i = 9; i < 18; i++) {
-            console.log(currentTime, $(`#hr-17`).data(".description"));
-            if ($('#id').data("time") == currentTime) {
-                $("textarea").addClass("present");
-            } else if (currentTime < $(`#${i}`).data("time")) {
-                $(`.description${i}`).addClass("future",);
+            var hour = $('#text-entry' + i);
+            if (i < currentTime) {
+                hour.addClass("past");
+            } else if (i === currentTime) {
+                hour.addClass("present");
+            } else {
+                hour.addClass("future");
             }
         }
-}
+    }
 
 
-    setInterval(function () {
+    setInterval(function (eventText) {
         updateColors();
     }, 1000);
 
