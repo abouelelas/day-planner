@@ -17,42 +17,14 @@ function getLocalStorage() {
 
     $(".saveBtn").each(function (elem) {
         $(this).parent().siblings().children('.description').val(localStorage.getItem($(this).attr("id")));
-
-        //     let value = localStorage.getItem(key);
-        //     console.log(value);
-        //     if (value) {
-        //         $(`#text${key}`).text(value);
-        //     }
-        // })
-    })
+        // let value = localStorage.getItem(key);
+        // console.log(value);
+        // if (value) {
+        //     $(`#text${key}`).text(value);
+        // }
+    });
 }
 $(document).ready(function () {
-
-    //     for (let i = 9; i < 18; i++) {
-
-    // create a row
-    // var row = $(`<div data-time=${i} id='${i}' class="row">`);
-
-    // create a column
-    // var col1 = $('<div class="col-sm-2"> <p class="hour">' + formatAMPM(i) + '</p>');
-
-    // //create column 2
-    // var col2 = $(`<div class="col-sm-8 past"><textarea id=text${i} class="description" placeholder="Add your event here..."></textarea>`);
-
-    // //create column 3
-    // var col3 = $(`<div class="col-sm-2"><button class="saveBtn" id=${i}><i class="fas fa-save"></i></button>`)
-
-    // append col to row
-    // row.append(col1);
-    // row.append(col2);
-    // row.append(col3);
-
-    // // last step add rows to container
-    // $(".container").append(row);
-
-    // getLocalStorage();
-    // console.log(event);
-
     function formatAMPM(hours) {
         var ampm = hours >= 12 ? 'pm' : 'am';
         hours = hours % 12;
@@ -63,19 +35,36 @@ $(document).ready(function () {
 
     function updateColors() {
         var currentTime = new Date().getHours();
-        // for (var i = 9; i < 18; i++) {
-        console.log(currentTime, $('text-entry1').data("time"));
-        if ($(`text-entry1`).data("time") == currentTime) {
-            $(`#text${i}`).addClass("present");
-        } else if (currentTime < $(`text-entry1`).data("time")) {
-            $(`#text${i}`).addClass("future");
-        }
-    }
+        console.log("currentTime: ", currentTime);
+        console.log(localStorage.getItem);
+        //compare currentTime with localStorage time and if currentTime === localStorage
+        //  $("whateverElement").addClass("whateverisyourcolor") and 
+    //     for (var i = 9; i < 18; i++) {
+    //         console.log(currentTime, $('.description').data("tdata-time"));
+    //         console.log($(`description`).data("time"));
+    //         console.log("currentTime: ", currentTime);
+    //         //if they equal each other, then check those elements and makes sure that the class has been added.
+    //         if ($(`.description`).data("time") == currentTime) {
+    //             $(`.description${i}`).addClass("present");
+    //         } else if (currentTime < $(`.description${i}`).data("time")) {
+    //             $(`.description${i}`).addClass("future");
+    //         }
+    //     }
     // }
+        for (var i = 9; i < 18; i++) {
+            console.log(currentTime, $(`#hr-17`).data(".description"));
+            if ($('#id').data("time") == currentTime) {
+                $("textarea").addClass("present");
+            } else if (currentTime < $(`#${i}`).data("time")) {
+                $(`.description${i}`).addClass("future",);
+            }
+        }
+}
+
 
     setInterval(function () {
         updateColors();
-    }, 1000000);
+    }, 1000);
 
     var saveBtn = $('.saveBtn');
 
